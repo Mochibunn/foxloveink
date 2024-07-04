@@ -44,3 +44,34 @@
     border: 1px solid rgba(29, 1, 57, 0.821);
   }
 }
+
+@media (prefers-reduced-motion: no-preference) {
+  .dance {
+    position: relative;
+    top: 0px;
+    animation: dance infinite 1.5s steps(1, end);
+  }
+
+  @keyframes dance {
+    from {
+      transform: scale(1, 1);
+      top: 50px;
+    }
+    40% {
+      transform: scale(1, 1);
+      top: 0px;
+    }
+    50% {
+      transform: scale(-1, 1);
+      top: 50px;
+    }
+    90% {
+      transform: scale(-1, 1);
+      top: 00px;
+    }
+    to {
+      transform: scale(-1, 1);
+      top: 00px;
+    }
+  }
+}
