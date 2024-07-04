@@ -4,11 +4,32 @@
 
 @layer utilities {
   .debug {
-    background-color: rgb(161, 22, 161) !important;
+    background-color: rgb(161, 22, 161);
     border: cyan 4px dashed !important;
+    animation: debug 2.5s infinite ease-in-out;
+  }
+  @keyframes debug {
+    from {
+      background-color: rgb(101, 19, 101);
+    }
+    50% {
+      background-color: rgb(169, 52, 169);
+    }
+    to {
+      background-color: rgb(101, 19, 101);
+    }
+  }
+  .clearfix {
+    overflow: auto;
   }
 }
 
+body {
+  height: 100vh;
+}
+img {
+  object-fit: scale-down;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
   /* line-height: 1.5; */
@@ -67,11 +88,11 @@
     }
     90% {
       transform: scale(-1, 1);
-      top: 00px;
+      top: 0px;
     }
     to {
       transform: scale(-1, 1);
-      top: 00px;
+      top: 0px;
     }
   }
 }
