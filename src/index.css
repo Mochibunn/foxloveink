@@ -96,3 +96,24 @@ img {
     }
   }
 }
+
+/* .rfm-marquee {
+  animation-composition: accumulate;
+  will-change: animation;
+  animation-fill-mode: both;
+}
+.rfm-marquee:hover {
+  animation: stop 1s ease-in running;
+  animation-composition: accumulate;
+  animation-fill-mode: both;
+  will-change: animation;
+}
+
+@keyframes stop {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-1%);
+  }
+} */
