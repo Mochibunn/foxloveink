@@ -9,6 +9,7 @@ lerna-debug.log*
 
 # Snooping as usual, I see? 🐰
 assets_dev
+src/assets/images/gallery
 node_modules
 dist
 dist-ssr

@@ -2,7 +2,7 @@ import Carousel from "../components/carouselComponent";
 import Header from "../components/headerComponent";
 import LandingComp from "../components/landingComponent";
 
-let Landing = () => {
+const Landing = () => {
   return (
     <div className="h-[100vh] relative" id="landingBg">
       <Header />
