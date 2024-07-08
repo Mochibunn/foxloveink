@@ -4,12 +4,13 @@ import LandingComp from "../components/landingComponent";
 
 let Landing = () => {
   return (
-    <div className="h-[100vh]" id="landingBg">
+    <div className="h-[100vh] relative" id="landingBg">
       <Header />
-      <div className="divider" />
       <LandingComp />
       <div className="divider" />
+      <div className="my-6">
       <Carousel />
+      </div>
       <div className="divider" />
     </div>
   );
