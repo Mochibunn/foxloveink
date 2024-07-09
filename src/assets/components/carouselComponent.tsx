@@ -30,19 +30,28 @@ const CarouselComp = () => {
     "/src/assets/images/gallery/Sello_Glasses.png",
   ];
 
-  const imageShuffle = images
-    .map((value) => ({ value, sort: Math.random() }))
+  const imageShuffle: string[] = images
+    .map((value: string) => ({ value, sort: Math.random() }))
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
 
   const settings = {
     responsive: {
+      superLargeDesktop: {
+        breakpoint: {
+          max: 9000,
+          min: 3000,
+        },
+        items: 7,
+        partialVisibilityGutter: 50,
+        slidesToSlide: 1,
+      },
       desktop: {
         breakpoint: {
           max: 3000,
           min: 1024,
         },
-        items: 6,
+        items: 7,
         partialVisibilityGutter: 40,
         slidesToSlide: 1,
       },
@@ -51,7 +60,7 @@ const CarouselComp = () => {
           max: 464,
           min: 0,
         },
-        items: 3,
+        items: 1,
         partialVisibilityGutter: 30,
         slidesToSlide: 1,
       },
@@ -69,25 +78,30 @@ const CarouselComp = () => {
     rewind: false,
     infinite: true,
     showDots: false,
+    swipeable: true,
+    draggable: false,
     centerMode: true,
+    pauseOnHover: true,
+    pauseOnFocus: true,
     autoPlaySpeed: 5000,
     focusOnSelect: true,
-    customTransition: "transform 3000ms ease-out",
+    shouldResetAutoplay: true,
+    customTransition: isMobile
+      ? "transform 300ms ease-in-out"
+      : "transform 3000ms ease-out",
     rewindWithAnimation: false,
     removeArrowOnDeviceType: ["mobile", "tablet"],
     autoPlay: isMobile ? false : true,
-    shouldResetAutoplay: true,
-    draggable: false,
-    pauseOnHover: true,
-    pauseOnFocus: true,
-    swipeable: true,
   };
   return (
     <Carousel {...settings}>
       {imageShuffle.map((image: string) => {
         return (
-          <div className="flex flex-col justify-center min-h-full px-4 ">
-            <img src={image} alt="Placeholder image" className="py-auto" />
+          <div
+            className="flex flex-col justify-center min-h-full px-4 "
+            key={image.indexOf(image)}
+          >
+            <img src={image} alt="Artwork example" className="py-auto" />
           </div>
         );
       })}
