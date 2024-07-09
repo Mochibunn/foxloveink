@@ -1,7 +1,8 @@
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
-import Slider from "react-slick";
-const Carousel = () => {
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import { isMobile } from "react-device-detect";
+
+const CarouselComp = () => {
   const images: string[] = [
     "/src/assets/images/gallery/6_Characters.png",
     "/src/assets/images/gallery/Back_to_School_Bun.png",
@@ -29,36 +30,69 @@ const Carousel = () => {
     "/src/assets/images/gallery/Sello_Glasses.png",
   ];
 
+  const imageShuffle = images
+    .map((value) => ({ value, sort: Math.random() }))
+    .sort((a, b) => a.sort - b.sort)
+    .map(({ value }) => value);
+
   const settings = {
-    dots: false,
+    responsive: {
+      desktop: {
+        breakpoint: {
+          max: 3000,
+          min: 1024,
+        },
+        items: 6,
+        partialVisibilityGutter: 40,
+        slidesToSlide: 1,
+      },
+      mobile: {
+        breakpoint: {
+          max: 464,
+          min: 0,
+        },
+        items: 3,
+        partialVisibilityGutter: 30,
+        slidesToSlide: 1,
+      },
+      tablet: {
+        breakpoint: {
+          max: 1024,
+          min: 464,
+        },
+        items: 3,
+        partialVisibilityGutter: 30,
+        slidesToSlide: 1,
+      },
+    },
+    rtl: false,
+    rewind: false,
     infinite: true,
-    speed: 1000,
-    slidesToShow: 5,
-    slidesToScroll: 2,
-    accessibility: true,
-    arrows: true,
-    autoplay: true,
+    showDots: false,
     centerMode: true,
-    pauseOnFocus: true,
-    pauseOnHover: true,
-    swipeToSlide: false,
-    swipe: false,
-    touchThreshold: 100,
+    autoPlaySpeed: 5000,
     focusOnSelect: true,
-    waitForAnimate: false,
-    variableWidth: false,
+    customTransition: "transform 3000ms ease-out",
+    rewindWithAnimation: false,
+    removeArrowOnDeviceType: ["mobile", "tablet"],
+    autoPlay: isMobile ? false : true,
+    shouldResetAutoplay: true,
+    draggable: false,
+    pauseOnHover: true,
+    pauseOnFocus: true,
+    swipeable: true,
   };
   return (
-    <Slider {...settings}>
-      {images.map((image) => {
+    <Carousel {...settings}>
+      {imageShuffle.map((image: string) => {
         return (
-          <div className="min-h-full px-4">
-            <img src={image} alt="Placeholder image" className="py-auto"/>
+          <div className="flex flex-col justify-center min-h-full px-4 ">
+            <img src={image} alt="Placeholder image" className="py-auto" />
           </div>
         );
       })}
-    </Slider>
+    </Carousel>
   );
 };
 
-export default Carousel;
+export default CarouselComp;
