@@ -1,6 +1,11 @@
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import { isMobile } from "react-device-detect";
+import {Modal, ModalContent, ModalHeader, ModalBody, ModalFooter, useDisclosure} from "@nextui-org/modal";
+import {Image} from "@nextui-org/image";
+import {Button, ButtonGroup} from "@nextui-org/button";
+import {Card, CardHeader, CardBody, CardFooter} from "@nextui-org/card";
+import { useState } from "react";
 
 const CarouselComp = () => {
   const images: string[] = [
@@ -35,6 +40,15 @@ const CarouselComp = () => {
     .sort((a, b) => a.sort - b.sort)
     .map(({ value }) => value);
 
+  const [currentImage, setImage] : any = useState("");
+
+  const {isOpen, onOpen, onOpenChange, onClose} = useDisclosure();
+  const handleOpen = (image : any) => {
+    setImage(image);
+    onOpen();
+  }
+
+
   const settings = {
     responsive: {
       superLargeDesktop: {
@@ -44,7 +58,7 @@ const CarouselComp = () => {
         },
         items: 7,
         partialVisibilityGutter: 50,
-        slidesToSlide: 1,
+        slidesToSlide: 5,
       },
       desktop: {
         breakpoint: {
@@ -53,7 +67,7 @@ const CarouselComp = () => {
         },
         items: 7,
         partialVisibilityGutter: 40,
-        slidesToSlide: 1,
+        slidesToSlide: 3,
       },
       mobile: {
         breakpoint: {
@@ -71,7 +85,7 @@ const CarouselComp = () => {
         },
         items: 3,
         partialVisibilityGutter: 30,
-        slidesToSlide: 1,
+        slidesToSlide: 2,
       },
     },
     rtl: false,
@@ -81,28 +95,31 @@ const CarouselComp = () => {
     swipeable: true,
     draggable: false,
     centerMode: true,
-    pauseOnHover: true,
-    pauseOnFocus: true,
-    autoPlaySpeed: 5000,
-    focusOnSelect: true,
-    shouldResetAutoplay: true,
+    // pauseOnHover: true,
+    // pauseOnFocus: true,
+    // autoPlaySpeed: 5000,
+    // focusOnSelect: false,
+    // shouldResetAutoplay: true,
     customTransition: isMobile
       ? "transform 300ms ease-in-out"
-      : "transform 3000ms ease-out",
+      : "transform 500ms ease-out",
     rewindWithAnimation: false,
     removeArrowOnDeviceType: ["mobile", "tablet"],
-    autoPlay: isMobile ? false : true,
+    // autoPlay: false,
   };
+
   return (
     <Carousel {...settings}>
       {imageShuffle.map((image: string) => {
         return (
+          <>
           <div
             className="flex flex-col justify-center min-h-full px-4 "
             key={image.indexOf(image)}
           >
-            <img src={image} alt="Artwork example" className="py-auto" />
+            <Image src={image} alt="Artwork example" className="py-auto" />
           </div>
+          </>
         );
       })}
     </Carousel>

@@ -29,3 +29,4 @@ dist-ssr
 # Own stuff
 src/assets/components/carouselComponentSlick.tsx
 src/assets/components/carouselComponentSwiper.tsx
+src/assets/components/carouselComponentMultiCarousel.tsx
