@@ -99,4 +99,23 @@ img {
       top: 0px;
     }
   }
+  .eemage {
+    transition: all 0.4s ease-out;
+  }
+  
+  .eemage:hover {
+    transform: scale(2.5);
+  }
+}
+.react-multi-carousel-track, .react-multi-carousel-list {
+  overflow: visible !important;
+}
+
+li {
+  position: relative !important;
+  z-index: 20!important;
+  transition: all 0.4s ease-out;
+}
+li:hover {
+  z-index: 300 !important;
 }

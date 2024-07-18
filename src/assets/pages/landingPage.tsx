@@ -8,7 +8,7 @@ const Landing = () => {
       <Header />
       <LandingComp />
       <div className="divider" />
-      <div className="my-6">
+      <div className="my-6 overflow-visible">
       <Carousel />
       </div>
       <div className="divider" />

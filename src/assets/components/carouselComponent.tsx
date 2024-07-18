@@ -109,7 +109,7 @@ const CarouselComp = () => {
   };
 
   return (
-    <Carousel {...settings}>
+    <Carousel {...settings} className="relative">
       {imageShuffle.map((image: string) => {
         return (
           <>
@@ -117,7 +117,8 @@ const CarouselComp = () => {
             className="flex flex-col justify-center min-h-full px-4 "
             key={image.indexOf(image)}
           >
-            <Image src={image} alt="Artwork example" className="py-auto" />
+            <Image src={image} alt="Artwork example" className="relative rounded-md shadow-lg py-auto eemage" key={Math.random()}
+            />
           </div>
           </>
         );
